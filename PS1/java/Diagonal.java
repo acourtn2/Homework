@@ -31,11 +31,17 @@ PLEASE LOOK AT PS1.txt FOR MORE DETAILS!!!
 ************************************************
 
 */
-public class Diagonal {
+public class tester {
 
 	public static int diagonal(int[][] input) {
-		//YOUR CODE HERE
-		return 0;
+		int diagonalOne = 0;
+		int diagonalTwo = 0;
+		int side = input.length;
+		for(int j = 0; j < side; j++){
+			diagonalOne += input[j][j];
+			diagonalTwo += input[j][(side-1-j)];
+		}
+		return (diagonalOne*diagonalTwo);
 	}
 
 
@@ -62,6 +68,7 @@ public class Diagonal {
 		catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-	}
-
+		
+	} 
+	
 }

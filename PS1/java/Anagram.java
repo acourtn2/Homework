@@ -26,7 +26,7 @@ an anagram is a word, phrase, or name formed by rearranging the letters of anoth
 
 Given a String S, determine if it is an anagram of a palindrome. 
 Return true if the String is an anagram of a palindrome, and false otherwise. 
-For example, the String “oatrtro” will return true (rotator), while the String “false” will return false.
+For example, the String will return true (rotator), while the String will return false.
 
 
 PLEASE LOOK AT PS1.txt FOR MORE DETAILS!!!
@@ -38,13 +38,35 @@ PLEASE LOOK AT PS1.txt FOR MORE DETAILS!!!
 public class Anagram {
 
 	public static boolean anagram(String input) {
-		//YOUR CODE HERE
-		return false;
+		boolean oddNum = false;
+		String f = "";
+		Hashtable<String,Integer> counter = new Hashtable<String, Integer>();
+		for(int j = 0;j<input.length();j++){
+			if (counter.get((input.substring(j,j+1))) == null) {
+				counter.put(input.substring(j,j+1),new Integer(1));
+			} else {
+				
+				counter.put(input.substring(j,j+1),new Integer((counter.get(input.substring(j,j+1)))+1));
+			}
+		}
+		
+	Enumeration<String> keys = counter.keys();
+		while(keys.hasMoreElements()){
+		 	f = (String)keys.nextElement();
+			if(((counter.get(f))%2 != 0) && (oddNum == true)){
+				return false;
+			} else if(((counter.get(f))%2 != 0) && (oddNum == false)){
+				oddNum = true;
+			} 
+		}
+		
+		return true;
 	}
 
 
 
 	public static void main(String[] args) {
+		
 		File file = new File("Anagram.txt");
 		try {
 			Scanner scan = new Scanner(file);
@@ -57,6 +79,6 @@ public class Anagram {
 		}
 		catch (FileNotFoundException e) {
 			e.printStackTrace();
-		}
+		} 
 	}
 }

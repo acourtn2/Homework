@@ -33,8 +33,19 @@ public class Stairs {
 
 
 	public static void stairs(int input) {
-		//YOUR CODE HERE
-		return;
+		for(int j = input; j > 0; j--){
+			int space = j-1;
+			int hashtag = input-space;
+			while(space > 0){
+				System.out.print(" ");
+				space --;
+			}
+			while(hashtag > 0) {
+				System.out.print("#");
+				hashtag --;
+			}
+			System.out.println("");
+			}
 	}
 
 
@@ -51,6 +62,6 @@ public class Stairs {
 		catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-	}
+	} 
 
 }
